@@ -2,7 +2,7 @@ import React from 'react'
 
 function USaverage() {
     return(
-        <h1>US Average</h1>
+        <h1></h1>
     )
 }
 

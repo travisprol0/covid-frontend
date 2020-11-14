@@ -2,7 +2,7 @@ import React from 'react'
 
 function UStotal() {
     return(
-        <h1>US Total</h1>
+        <h1></h1>
     )
 }
 
