@@ -1,5 +1,5 @@
 import React from "react"
-import '../CSS/Home.css';
+import '../CSS/App.css';
 import UScurrent from '../components/UScurrent'
 import USaverage from '../components/USaverage'
 import UStotal from '../components/UStotal'

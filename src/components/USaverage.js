@@ -39,14 +39,15 @@ class USaverage extends React.Component {
   }
 
   percentPositiveAverage = (data) => {
+      // numbers are strings right now that's why this doesn't work
       let percent = (this.state.newCases / this.state.newNegatives) * 100
-      console.log((this.state.newCases / this.state.newNegatives))
+      console.log(data)
   }
 
   render() {
     return (
       <div className="USaverageData">
-        <h5>7 Day Average: </h5>
+        <h5>7 Day Average</h5>
         <p>New Positives: {this.state.newCases}</p>
         <p>New Negatives: {this.state.newNegatives}</p>
         <p>Percent Positive: </p>
