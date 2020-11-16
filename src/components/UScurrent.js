@@ -21,56 +21,60 @@ class UScurrent extends React.Component {
 
   formatDate = (data) => {
     let date = data.date.toString()
+    console.log(date)
     let dateArray = []
     let month = date.slice(4, 6)
     let day = date.slice(6, 8)
     let year = date.slice(0, 4)
     dateArray.push(month, day, year)
     let formattedDate = dateArray.join("/")
-    this.setState({date: formattedDate})
+    this.setState({ date: formattedDate })
     this.cases(data)
   }
 
   cases = (data) => {
     let cases = data.positiveIncrease.toLocaleString("en")
-    this.setState({cases: cases})
+    this.setState({ cases: cases })
     this.negatives(data)
-}
+  }
 
-negatives = (data) => {
-  let negatives = data.negativeIncrease.toLocaleString("en")
-  this.setState({negatives: negatives})
-  this.percentPositive(data)
-}
+  negatives = (data) => {
+    let negatives = data.negativeIncrease.toLocaleString("en")
+    this.setState({ negatives: negatives })
+    this.percentPositive(data)
+  }
 
-percentPositive = (data) => {
-  let percent = ((data.positiveIncrease / data.negativeIncrease) * 100).toFixed(2)
-  this.setState({ percentPositive: percent })
-  this.hospitalized(data)
-}
+  percentPositive = (data) => {
+    let percent = (
+      (data.positiveIncrease / data.negativeIncrease) *
+      100
+    ).toFixed(2)
+    this.setState({ percentPositive: percent })
+    this.hospitalized(data)
+  }
 
-hospitalized = (data) => {
+  hospitalized = (data) => {
     let hospitalized = data.hospitalizedCumulative.toLocaleString("en")
-    this.setState({hospitalized: hospitalized})
+    this.setState({ hospitalized: hospitalized })
     this.icu(data)
-}
+  }
 
-icu = (data) => {
-    let icu = data.inIcuCumulative.toLocaleString("en")
-    this.setState({icu: icu})
+  icu = (data) => {
+    let icu = data.inIcuCurrently.toLocaleString("en")
+    this.setState({ icu: icu })
     this.ventilator(data)
-}
+  }
 
-ventilator = (data) => {
-    let ventilator = data.onVentilatorCumulative.toLocaleString("en")
-    this.setState({ventilator: ventilator})
+  ventilator = (data) => {
+    let ventilator = data.onVentilatorCurrently.toLocaleString("en")
+    this.setState({ ventilator: ventilator })
     this.deaths(data)
-}
+  }
 
-deaths = (data) => {
-    let deaths = data.death.toLocaleString("en")
-    this.setState({dead: deaths})
-}
+  deaths = (data) => {
+    let deaths = data.deathIncrease.toLocaleString("en")
+    this.setState({ dead: deaths })
+  }
 
   render() {
     return (
@@ -84,15 +88,6 @@ deaths = (data) => {
         <p>Currently in ICU: {this.state.icu}</p>
         <p>Currently on Ventilator: {this.state.ventilator}</p>
         <p>Lives Lost: {this.state.dead}</p>
-
-        {/* <p>New Positives: {props.data.positiveIncrease.toLocaleString("en")}</p>
-      <p>New Negatives: {props.data.negativeIncrease.toLocaleString("en")}</p>
-      <p>Percent Positive: {percentagePositive}%</p>
-      <p>Currently Hospitalized: {props.data.hospitalizedCurrently.toLocaleString("en")}</p>
-      <p>Hospitalization Increase: {props.data.hospitalizedIncrease.toLocaleString("en")}</p>
-      <p>Currently in ICU: {props.data.inIcuCurrently.toLocaleString("en")}</p>
-      <p>Currently on Ventilator: {props.data.onVentilatorCurrently.toLocaleString("en")}</p>
-      <p>Lives Lost: {props.data.deathIncrease.toLocaleString("en")}</p> */}
       </div>
     )
   }
