@@ -1,6 +1,6 @@
 import React from "react"
 
-class UScurrent extends React.Component {
+class StateCurrent extends React.Component {
   state = {
     date: null,
     cases: null,
@@ -14,13 +14,18 @@ class UScurrent extends React.Component {
   }
 
   componentDidMount() {
-    fetch("https://api.covidtracking.com/v1/us/current.json")
+    fetch("https://api.covidtracking.com/v1/states/current.json")
       .then((response) => response.json())
-      .then((data) => this.formatDate(data[0]))
+      .then((data) => this.filterState(data))
   }
 
-  formatDate = (data) => {
-    let date = data.date.toString()
+  filterState = (data) => {
+    let state = data.find((state) => state.state === this.props.abbreviation)
+    this.formatDate(state)
+  }
+
+  formatDate = (state) => {
+    let date = state.date.toString()
     let dateArray = []
     let month = date.slice(4, 6)
     let day = date.slice(6, 8)
@@ -28,7 +33,7 @@ class UScurrent extends React.Component {
     dateArray.push(month, day, year)
     let formattedDate = dateArray.join("/")
     this.setState({ date: formattedDate })
-    this.cases(data)
+    this.cases(state)
   }
 
   cases = (data) => {
@@ -59,25 +64,37 @@ class UScurrent extends React.Component {
   }
 
   icu = (data) => {
-    let icu = data.inIcuCurrently.toLocaleString("en")
-    this.setState({ icu: icu })
-    this.ventilator(data)
+    if (data.inIcuCurrently == null) {
+      let icu = 0
+      this.setState({ icu: icu })
+      this.ventilator(data)
+    } else {
+      let icu = data.inIcuCurrently.toLocaleString("en")
+      this.setState({ icu: icu })
+      this.ventilator(data)
+    }
   }
 
   ventilator = (data) => {
-    let ventilator = data.onVentilatorCurrently.toLocaleString("en")
-    this.setState({ ventilator: ventilator })
-    this.deaths(data)
+    if (data.onVentilatorCurrently == null) {
+      let ventilator = 0
+      this.setState({ ventilator: ventilator })
+      this.deaths(data)
+    } else {
+      let ventilator = data.onVentilatorCurrently.toLocaleString("en")
+      this.setState({ ventilator: ventilator })
+        this.deaths(data)
+    }
   }
 
-  deaths = (data) => {
-    let deaths = data.deathIncrease.toLocaleString("en")
-    this.setState({ dead: deaths })
-  }
+    deaths = (data) => {
+      let deaths = data.deathIncrease.toLocaleString("en")
+      this.setState({ dead: deaths })
+    }
 
   render() {
     return (
-      <div className="UScurrentData">
+        <div className="stateCurrentData">
         <h5>Today: {this.state.date}</h5>
         <p>New Positives: {this.state.cases}</p>
         <p>New Negatives: {this.state.negatives}</p>
@@ -92,4 +109,4 @@ class UScurrent extends React.Component {
   }
 }
 
-export default UScurrent
+export default StateCurrent
