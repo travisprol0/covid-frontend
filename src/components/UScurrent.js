@@ -49,12 +49,18 @@ class UScurrent extends React.Component {
       100
     ).toFixed(2)
     this.setState({ percentPositive: percent })
-    this.hospitalized(data)
+    this.currentlyHospitalized(data)
   }
 
-  hospitalized = (data) => {
-    let hospitalized = data.hospitalizedCumulative.toLocaleString("en")
-    this.setState({ hospitalized: hospitalized })
+  currentlyHospitalized = (data) => {
+    let hospitalized = data.hospitalizedCurrently.toLocaleString("en")
+    this.setState({ currentlyHospitalized: hospitalized })
+    this.hospitalizationIncrease(data)
+  }
+
+  hospitalizationIncrease = (data) => {
+    let hospitalizationIncrease = data.hospitalizedIncrease.toLocaleString("en")
+    this.setState({ hospitalizationIncrease: hospitalizationIncrease })
     this.icu(data)
   }
 

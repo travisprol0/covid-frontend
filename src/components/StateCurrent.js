@@ -54,12 +54,18 @@ class StateCurrent extends React.Component {
       100
     ).toFixed(2)
     this.setState({ percentPositive: percent })
-    this.hospitalized(data)
+    this.currentlyHospitalized(data)
   }
 
-  hospitalized = (data) => {
-    let hospitalized = data.hospitalizedCumulative.toLocaleString("en")
-    this.setState({ hospitalized: hospitalized })
+  currentlyHospitalized = (data) => {
+    let hospitalized = data.hospitalizedCurrently.toLocaleString("en")
+    this.setState({ currentlyHospitalized: hospitalized })
+    this.hospitalizationIncrease(data)
+  }
+
+  hospitalizationIncrease = (data) => {
+    let hospitalizationIncrease = data.hospitalizedIncrease.toLocaleString("en")
+    this.setState({ hospitalizationIncrease: hospitalizationIncrease })
     this.icu(data)
   }
 
@@ -83,18 +89,18 @@ class StateCurrent extends React.Component {
     } else {
       let ventilator = data.onVentilatorCurrently.toLocaleString("en")
       this.setState({ ventilator: ventilator })
-        this.deaths(data)
+      this.deaths(data)
     }
   }
 
-    deaths = (data) => {
-      let deaths = data.deathIncrease.toLocaleString("en")
-      this.setState({ dead: deaths })
-    }
+  deaths = (data) => {
+    let deaths = data.deathIncrease.toLocaleString("en")
+    this.setState({ dead: deaths })
+  }
 
   render() {
     return (
-        <div className="stateCurrentData">
+      <div className="stateCurrentData">
         <h5>Today: {this.state.date}</h5>
         <p>New Positives: {this.state.cases}</p>
         <p>New Negatives: {this.state.negatives}</p>
