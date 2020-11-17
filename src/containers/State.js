@@ -51,6 +51,7 @@ class State extends React.Component {
         <StateCurrent abbreviation={this.state.abbreviation}/>
         <StateAverage abbreviation={this.state.abbreviation}/>
         <StateTotal abbreviation={this.state.abbreviation}/>
+        <p>{this.state.notes}</p>
       </>
     )
   }
