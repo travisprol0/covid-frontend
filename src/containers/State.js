@@ -31,7 +31,6 @@ class State extends React.Component {
   }
 
   filterState = (data) => {
-    // data.find((state))
     let state = data.find((state) => state.state === this.state.abbreviation)
     let notes = state.notes
     let website = state.covid19Site
