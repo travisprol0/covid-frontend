@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import "../CSS/State.css"
 import StateCurrent from "../components/StateCurrent"
 import StateAverage from "../components/StateAverage"
@@ -47,11 +46,12 @@ class State extends React.Component {
       <>
         <h1>{this.state.state}</h1>
         <a href={this.state.website} target="blank">{this.state.state}'s COVID-19 Site</a>
+        <br></br>
         <a href={this.state.twitter} target="blank">{this.state.state}'s Health Department Twitter</a>
         <StateCurrent abbreviation={this.state.abbreviation}/>
         <StateAverage abbreviation={this.state.abbreviation}/>
         <StateTotal abbreviation={this.state.abbreviation}/>
-        <p>{this.state.notes}</p>
+        <p className="notes">{this.state.notes}</p>
       </>
     )
   }

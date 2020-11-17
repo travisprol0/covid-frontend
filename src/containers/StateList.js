@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from 'react-router-dom'
 import StateElement from "../components/StateElement"
 
 class StateList extends React.Component {
@@ -13,16 +14,19 @@ class StateList extends React.Component {
 
   mapStates = () => {
     if (this.state.data !== null) {
-      return this.state.data.map((state) => <StateElement key={state.id} state={state}/>)
+      return this.state.data.map((state) => (
+        <StateElement key={state.id} state={state} />
+      ))
     }
   }
 
   render() {
-    return <>
-    <ul>
-    {this.mapStates()}
-    </ul>
-    </>
+    return (
+      <>
+        <Link to="/">Home</Link>
+        <ul>{this.mapStates()}</ul>
+      </>
+    )
   }
 }
 
