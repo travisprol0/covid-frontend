@@ -6,6 +6,15 @@
     text-align: center;
 }
 
+.stateList {
+    margin-top: 20px;
+    columns: 3;
+    width: 60%;
+    height: 342px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .stateData {
     width: 75%;
     height: 350px; 

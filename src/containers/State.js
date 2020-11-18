@@ -1,5 +1,4 @@
 import React from "react"
-import "../CSS/State.css"
 import StateCurrent from "../components/StateCurrent"
 import StateAverage from "../components/StateAverage"
 import StateTotal from "../components/StateTotal"

@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import "../CSS/State.css"
 import StateElement from "../components/StateElement"
 
 class StateList extends React.Component {
@@ -22,7 +23,7 @@ class StateList extends React.Component {
           state.abbreviation.includes(newSearchTerm) ||
           state.state.toUpperCase().includes(newSearchTerm)
       )
-      this.setState({filteredStates: filteredStates})
+      this.setState({ filteredStates: filteredStates })
     }
   }
 
@@ -48,7 +49,7 @@ class StateList extends React.Component {
   }
 
   resetSearch = () => {
-    this.setState({filteredStates: [], searchTerm: ""})
+    this.setState({ filteredStates: [], searchTerm: "" })
   }
 
   render() {
@@ -58,7 +59,7 @@ class StateList extends React.Component {
         <form onSubmit={this.submitHandler}>
           <label for="search">Search:</label>
           <input
-          id="search"
+            id="search"
             name="searchTerm"
             value={this.state.searchTerm}
             onChange={this.changeHandler}
@@ -67,7 +68,9 @@ class StateList extends React.Component {
           <button>search</button>
           <button onClick={this.resetSearch}>reset</button>
         </form>
-        <ul>{this.mapStates()}</ul>
+        <div>
+          <ul className="stateList">{this.mapStates()}</ul>
+        </div>
       </>
     )
   }
