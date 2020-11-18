@@ -1,18 +1,39 @@
-.stateCurrentData {
-    border: 1px solid;
-    width: 300px
+.stateName {
+    text-align: center;
 }
 
-.stateTotalData {
-    border: 1px solid;
-    width: 300px
+.link {
+    text-align: center;
+}
+
+.stateData {
+    width: 75%;
+    height: 350px; 
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stateCurrentData {
+    width: 25%;
+    float: left;
 }
 
 .stateAverageData {
-    border: 1px solid;
-    width: 300px
+    width: 25%;
+    float: left;
+    margin-left: 12%
+}
+
+.stateTotalData {
+    width: 25%;
+    float: left;
+    margin-left: 12%
 }
 
 .notes {
-    border: 1px solid;
+    margin-top: 50px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }

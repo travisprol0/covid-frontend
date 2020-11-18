@@ -11,7 +11,7 @@ class State extends React.Component {
     abbreviation: null,
     notes: null,
     website: null,
-    twitter: null
+    twitter: null,
   }
 
   componentDidMount() {
@@ -24,9 +24,9 @@ class State extends React.Component {
   }
 
   fetchMetadata() {
-    fetch('https://api.covidtracking.com/v1/states/info.json')
-    .then((response) => response.json())
-    .then((data) => this.filterState(data))
+    fetch("https://api.covidtracking.com/v1/states/info.json")
+      .then((response) => response.json())
+      .then((data) => this.filterState(data))
   }
 
   filterState = (data) => {
@@ -37,20 +37,28 @@ class State extends React.Component {
     this.setState({
       notes: notes,
       website: website,
-      twitter: twitter
+      twitter: twitter,
     })
   }
 
   render() {
     return (
       <>
-        <h1>{this.state.state}</h1>
-        <a href={this.state.website} target="blank">{this.state.state}'s COVID-19 Site</a>
-        <br></br>
-        <a href={this.state.twitter} target="blank">{this.state.state}'s Health Department Twitter</a>
-        <StateCurrent abbreviation={this.state.abbreviation}/>
-        <StateAverage abbreviation={this.state.abbreviation}/>
-        <StateTotal abbreviation={this.state.abbreviation}/>
+        <h1 className="stateName">{this.state.state}</h1>
+        <div className="link">
+          <a href={this.state.website} target="blank">
+            {this.state.state}'s COVID-19 Site
+          </a>
+          <br></br>
+          <a href={this.state.twitter} target="blank">
+            {this.state.state}'s Health Department Twitter
+          </a>
+        </div>
+        <div className="stateData">
+            <StateCurrent abbreviation={this.state.abbreviation} />
+            <StateAverage abbreviation={this.state.abbreviation} />
+            <StateTotal abbreviation={this.state.abbreviation} />
+        </div>
         <p className="notes">{this.state.notes}</p>
       </>
     )

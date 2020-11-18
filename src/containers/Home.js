@@ -9,9 +9,21 @@ const Home = () => {
   return (
     <>
       <Link to="/states">States Index</Link>
-      <UScurrent />
-      <USaverage />
-      <UStotal />
+      <h1 className="title">United States Overall Status</h1>
+      <div className="link">
+          <a href="https://www.cdc.gov/ "target="blank">
+            Center For Disease Control
+          </a>
+          <br></br>
+          <a href="https://www.who.int/" target="blank">
+            World Health Organization
+          </a>
+        </div>
+      <div className="USData">
+        <UScurrent />
+        <USaverage />
+        <UStotal />
+      </div>
     </>
   )
 }
