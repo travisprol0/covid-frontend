@@ -50,7 +50,7 @@ class StateList extends React.Component {
         <form onSubmit={this.submitHandler}>
           <label for="search">Search:</label>
           <input
-            type="text"
+            type="search"
             name="searchTerm"
             value={this.state.searchTerm}
             onChange={this.changeHandler}
