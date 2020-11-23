@@ -39,10 +39,6 @@ class StateList extends React.Component {
     this.mapStates()
   }
 
-  resetSearch = (e) => {
-    e.preventDefault()
-  }
-
   render() {
     return (
       <>
@@ -56,7 +52,6 @@ class StateList extends React.Component {
             onChange={this.changeHandler}
             placeholder="state or abbreviation"
           ></input>
-          <button onClick={this.resetSearch}>reset</button>
         </form>
         <div>
           <ul className="stateList">{this.mapStates()}</ul>
